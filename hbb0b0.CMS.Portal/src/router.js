@@ -8,18 +8,14 @@ import App from './App.vue'
 export default [{
         path: '/index',
         component: App,
-        children: [{
-                name: '业务',
-                path: 'axios',
-                component: UserInfo
-            },
+        children: [
             {
-                name: 'departmentList',
+                name: '部门信息',
                 path: 'departmentList',
                 component: DepartmentList
             },
             {
-                name: 'employeeList',
+                name: '员工信息',
                 path: 'employeeList',
                 component: EmployeeList
             },

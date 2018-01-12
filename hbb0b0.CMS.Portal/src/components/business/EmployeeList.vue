@@ -31,6 +31,7 @@
       </el-form>
     </el-row>
   </div>
+  <div style="height: 10px; background-color: rgb(242, 242, 242);"></div>
   <div id="table">
     <el-table :data="pageList.items" stripe style="width: 100%" border>
       <el-table-column prop="emp_No" sortable label="编号">
@@ -44,12 +45,17 @@
       <el-table-column prop="birth_Date_Display" sortable label="出生日期">
       </el-table-column>
 
-      <el-table-column :context="_self" inline-template label="操作">
-        <span>
-            <el-button type="text" size="small">查看</el-button>
-            <el-button type="text" size="small">编辑</el-button>
-          </span>
+      <el-table-column  label="操作">
+       <template slot-scope="scope">
+        <el-button
+          @click="getDetail(scope.row)"
+          type="text"
+          size="small">
+          详细信息
+        </el-button>
+      </template>
       </el-table-column>
+     
     </el-table>
     <div class="block">
       <el-pagination :data="pageList" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page="queryCondition.pageInfo.pageIndex" :page-sizes="[10,100, 200, 300, 400]" :page-size="queryCondition.pageInfo.pageSize" layout="total, sizes, prev, pager, next, jumper"
@@ -115,7 +121,7 @@ export default {
     getData() {
       let _self = this;
       let url = "/Employee/query";
-      debugger;
+      //debugger;
       _self.$http
         .post(url, _self.queryCondition)
         .then(function(response) {
@@ -131,6 +137,12 @@ export default {
     hire_date_pick(maxDate, minDate) {
       //debugger;
       alert(maxDate);
+    }
+    ,getDetail(currentRow)
+    {
+      
+        this.$router.push({ path: '/index/employeeDetail/' + currentRow.emp_No});
+      
     }
   }
 };

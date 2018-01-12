@@ -21,7 +21,7 @@
       <el-table
         :data="pageList.items"
         stripe
-        style="width: 100%">
+        style="width: 100%" border>
         <el-table-column
           prop="dept_No"
           sortable

@@ -4,11 +4,16 @@ import Feedback from './components/feedback/Feedback.vue';
 import UserInfo from './components/business/UserInfo.vue';
 import DepartmentList from   './components/business/DepartmentList.vue';
 import EmployeeList from './components/business/EmployeeList.vue';
+import EmployeeDetail from './components/business/EmployeeDetail.vue';
 import App from './App.vue'
 export default [{
         path: '/index',
         component: App,
-        children: [
+        children: [{
+                name: '业务',
+                path: 'axios',
+                component: UserInfo
+            },
             {
                 name: '部门信息',
                 path: 'departmentList',
@@ -32,6 +37,12 @@ export default [{
                 path: 'feedback',
                 component: Feedback
             },
+            {
+                name:'员工详细信息',
+                path:'employeeDetail/:id',
+                component:EmployeeDetail
+            
+            }
         ]
     },
     {
